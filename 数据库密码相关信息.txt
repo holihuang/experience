@@ -1,0 +1,15 @@
+数据库名：root
+数据库密码：root
+
+忘记数据库密码，修改方法：
+1. macos找到/etc/my.cnf文件，sudo vim /etc/my.cnf打开文件，如果是 Windows 系统的话，MySQL 的配置文件是 my.ini，它在 MySQL 的默认安装目录下;
+[mysqld] 后面添加“skip-grant-tables”，意思是设置跳过权限验证
+2. 重启 MySQL： macOS上 brew services restart mysql windows上net stop mysql net start mysql Linux上service mysql restart 
+3. 设置新密码，
+输入“mysql -u root -p”命令来连接 MySQL 服务器，当出现输入密码框时直接敲回车就可以登录了
+设置新密码：ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';
+如果在执行该步骤的时候出现 ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement 错误，则需要先执行下FLUSH PRIVILEGES;再执行其他命令即可。
+4. 当我们设置完新密码之后，记得要把 MySQL 配置文件中的“skip-grant-tables”(跳过权限验证)去掉，然后再重启 MySQL 的服务就可以正常使用了。
+
+详细教程见链接：
+https://www.51cto.com/article/629065.html?pc

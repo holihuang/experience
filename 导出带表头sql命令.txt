@@ -1,0 +1,1 @@
+SELECT 'id', 'name', 'salary' UNION ALL SELECT id, name, salary FROM employees INTO OUTFILE '/path/to/employees.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n';
